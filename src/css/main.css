@@ -57,12 +57,14 @@ Global Styles
   box-sizing: border-box;
 }
 body {
-  font-family: var(--ff-secondary);
+  font-family: Roboto, sans-serif;
+  /*font-family: var(--ff-secondary);*/
   /*background: var(--clr-white);*/
-  background: #010203; /* Rich black */
+  /*background: #010203; /* Rich black */
+  /*background: grey;*/
   /*color: var(--clr-grey-1);*/
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.5;
+  /*color: rgba(255, 255, 255, 0.9);*/
+  /*line-height: 1.5;*/
   font-size: 0.875rem;
 }
 
@@ -72,7 +74,7 @@ ul {
 a {
   text-decoration: none;
 }
-
+/*
 h1,
 h2,
 h3,
@@ -102,8 +104,8 @@ h4 {
 p {
   margin-bottom: 1.25rem;
   color: var(--clr-grey-3);
-}
-@media screen and (min-width: 800px) {
+}*/
+/*@media screen and (min-width: 800px) {
   h1 {
     font-size: 3.6rem;
   }
@@ -125,7 +127,7 @@ p {
   h4 {
     line-height: 1;
   }
-}
+}*/
 /*  global classes */
 
 .btn,
@@ -193,48 +195,34 @@ p {
   flex-direction: column;
 }*/
 
-main {
-  margin-top: -5rem;
-}
-/*
-===============
-Navbar
-===============
-*/
-.navbar {
-  height: 5rem;
-  display: flex;
-  align-items: center;
-  background: transparent;
-}
-.nav-center {
-  width: 90vw;
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
+
 .nav-header {
+  width: 90vw;
+  margin: 5px auto;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+}
+.nav-header h1 {
+  font-size: 3.6rem;
+  font-weight: 300;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase;
+}
+.nav-header h3 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.9;
 }
 .nav-title {
-  display: block;
   text-align: center;
-  height: 240px;
 }
-.nav-title h2 {
-  line-height: 40px;
-  margin-bottom: 0;
-}
-.nav-title h4 {
-  line-height: 20px;  
-}
-.nav-logo {
-  display: block;
-  height: 40px;
-}
-.nav-logo img {
-  height: 100%;
+.nav-menu {
+  width: 90vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .toggle-btn {
   font-size: 2rem;
@@ -247,35 +235,15 @@ Navbar
 .toggle-btn:hover {
   color: var(--clr-primary-3);
 }
-.nav-links {
-  display: none;
-}
-.nav-icons {
-  display: none;
-}
 
-.facebook-icon {
-  color: #3b5998;
-}
-.twitter-icon {
-  color: #00acee;
-}
-.dribble-icon {
-  color: #ea4c89;
-}
 @media screen and (min-width: 800px) {
   .toggle-btn {
     display: none;
   }
-  .nav-center {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    column-gap: 2rem;
-    align-items: center;
-  }
   .nav-links {
     display: flex;
     align-items: center;
+    text-transform: uppercase;
   }
   .search-box {
     display: flex;
@@ -289,17 +257,18 @@ Navbar
     border: solid 1px grey;
     border-radius: 4px;
   }
-.search-box input {
-  margin-left: 5px;
-  border: none;
-  background-color: transparent;
-}
-
+  .search-box input {
+    margin-left: 5px;
+    border: none;
+    background-color: transparent;
+  }
   .page-link {
     margin-right: 1rem;
   }
   .page-link {
-    color: var(--clr-black);
+/*    color: white;*/
+    opacity: 0.8;
+    /*color: var(--clr-black);*/
     /*font-weight: bold;*/
     letter-spacing: var(--spacing);
     font-size: 1rem;
@@ -310,32 +279,30 @@ Navbar
     border-radius: var(--radius);
   }
   .page-link:hover {
-    background: var(--clr-primary-5);
-    color: var(--clr-primary-10);
+/*    background: var(--clr-primary-5);
+    color: var(--clr-primary-10);*/
+    opacity: 1;
   }
   .nav-icons {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    float: right;
   }
-  .nav-icons .social-icon {
+  .social-icon {
     font-size: 1.5rem;
     margin-left: 0.5rem;
-    color: white;
+    /*color: white;*/
     opacity: 0.8;
   }
-  .nav-icons .social-icon:hover {
+  .social-icon:hover {
 /*    color: var(--clr-primary-5);*/
-    color: white;
+    /*color: white;*/
     opacity: 1;    
   }
   .resume-icon {
-    padding: 2px;
+    padding: 1.5px;
     width: 24px;
     height: 24px;
-    opacity: 0.8;
-  }
-  .resume-icon:hover {
-    opacity: 1;
   }
 }
 /*
@@ -679,10 +646,12 @@ Footer
 ===============
 */
 .footer {
+  margin: 10px auto;
   height: 6rem;
   text-align: center;
-  background: var(--clr-black);
-  display: grid;
+/*  background: var(--clr-black);*/
+  display: flex;
+  flex-direction: column;
   place-items: center;
 }
 .footer-icons {
@@ -704,7 +673,7 @@ Footer
 }
 .footer p {
   margin-bottom: 0;
-  color: var(--clr-white);
+/*  color: var(--clr-white);*/
   text-transform: uppercase;
   letter-spacing: var(--spacing);
 }

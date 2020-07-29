@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 const Links = ({ styleClass, children }) => {
   return (
-    <ul className={styleClass}>
+    <ul className="nav-links">
       <li>
         <Link to="/" className="page-link">
           Home

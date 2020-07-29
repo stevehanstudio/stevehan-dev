@@ -10,10 +10,11 @@ import SEO from '../components/SEO'
 const IndexPage = ({ data }) => {
   const {allMdx: {nodes: projects}} = data
 
-  return <Layout>
-    <Skills />
-    <Projects projects={projects} title="Projects" />
-  </Layout>
+  return (
+    <Layout>
+      <Projects projects={projects} title="Projects" />
+    </Layout>
+  )
 }
 
 export const query = graphql`
