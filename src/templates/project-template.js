@@ -3,7 +3,7 @@ import Layout from '../components/Layout'
 //import Hero from '../components/Hero'
 import styled from 'styled-components'
 import Image from 'gatsby-image'
-import Banner from '../components/Banner'
+//import Banner from '../components/Banner'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 // ...GatsbyImageSharpFluid
@@ -29,9 +29,9 @@ const ProjectTemplate = ({ data}) => {
           {body}
         </MDXRenderer>
       </article>
-      <article>
+      {/*<article>
         <Banner />
-      </article>
+      </article>*/}
     </Wrapper>
   </Layout>
 }

@@ -1,33 +1,51 @@
 import React from 'react'
 import Image from 'gatsby-image'
 import BackgroundImage from 'gatsby-background-image'
+import { Paper, Card } from '@material-ui/core'
+import { makeStyles } from '@material-ui/styles'
+import { Link } from 'gatsby-theme-material-ui'
 import { FaRegClock } from 'react-icons/fa'
 import { IoMdArrowRoundForward } from 'react-icons/io'
-import { Link } from 'gatsby'
 import styled from 'styled-components'
 import SocialLinks from '../../constants/socialLinks'
+
+const useStyles = makeStyles({
+  //projTitle: {
+  //  padding: '5px',
+  //},
+  projContainer: {
+    height: '250px',
+    width: '100%',
+  },
+  image: {
+    height: '100%',
+    objectFit: 'cover',
+  }
+})
 
 const Project = ({ frontmatter, excerpt }) => {
   const { title, image, slug, date, category, readTime } = frontmatter;
   const test_string = slug
+  const classes = useStyles()
   console.log(frontmatter)
+  
   return (
-    <Wrapper>
+    <Paper className={classes.projContainer}>
       <BackgroundImage
-        Tag="section"
-        className="proj-container"
+        //        Tag="section"
+        className={classes.image}
         fluid={image.childImageSharp.fluid}
         backgroundColor={`#040e18`}
       >
-        <Link to={`/projects/${slug}`} className="proj-title">
+        <Link to={`/projects/${slug}`} className={classes.projTitle}>
           <h2>{title}</h2>
           <br />
           Learn more
           <IoMdArrowRoundForward />
         </Link>
-        <SocialLinks styleClass="proj-icons" />
+        {/*<SocialLinks styleClass="proj-icons" />*/}
       </BackgroundImage>
-    </Wrapper>
+    </Paper>
   )
 }
 

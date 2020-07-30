@@ -1,6 +1,5 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import Hero from '../components/Hero'
 import Projects from '../components/Projects'
 import { graphql } from 'gatsby'
 
@@ -16,7 +15,6 @@ const CategoryTemplate = props => {
   } = props
   return (
     <Layout>
-      <Hero />
       <Projects projects={projects} title={`category / ${category}`} />
     </Layout>
   )

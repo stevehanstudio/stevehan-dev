@@ -1,18 +1,48 @@
 import React from 'react'
 import Project from './Project'
-import Banner from '../Banner'
-import { Paper, Typography } from '@material-ui/core'
+import { Paper, Typography, Grid } from '@material-ui/core'
+import { makeStyles } from '@material-ui/styles'
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  projectsTitle: {
+    /*font-weight: 700;*/
+    textTransform: 'uppercase',
+    marginBottom: '1.2rem',
+  },
+  projectsContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    //columnGap: '1rem',
+  },
+}))
+
 const Projects = ({projects,title}) => {
-  return (<Paper square elevation={0}>
-    <Typography variant="h1">Projects Page</Typography>
-    <Typography variant="h1">Projects Page</Typography>
-    <Typography variant="h1">Projects Page</Typography>
-  </Paper>
+  const classes = useStyles()
+
+  return (
+    <Paper square elevation={0} className={classes.root}>
+      <Typography variant="h2" className={classes.projectsTitle}>
+        {title}
+      </Typography>
+      <Grid container spacing={2}>
+        {projects.map(project => {
+          return (
+            <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+              <Project key={project.id} {...project} />
+            </Grid>
+          )
+        })}
+      </Grid>
+    </Paper>
   )
 }
 
 export default Projects
-
+  
 /*    <section className="projects">
       <h2 className="projects-title">{title}</h2>
       <div className="projects-container projects-center">
