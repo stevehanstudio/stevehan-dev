@@ -1,7 +1,8 @@
 import React from 'react'
-import { Link } from 'gatsby-theme-material-ui'
+//import { Link } from 'gatsby-theme-material-ui'
+import { Link } from 'gatsby'
 import { FaBars } from 'react-icons/fa'
-import { AppBar, Toolbar, Paper, Grid, Divider, IconButton, Typography, Container, Switch, Tooltip, useMediaQuery, Grow } from '@material-ui/core'
+import { AppBar, Toolbar, Paper, Grid, Divider, Button, IconButton, Typography, Container, Switch, Tooltip, useMediaQuery, Grow } from '@material-ui/core'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Links from '../constants/links'
 import SocialLinks from '../constants/socialLinks'
@@ -123,7 +124,7 @@ const Navbar = ({themeMode, handleToggleThemeMode}) => {
   const classes = useStyles()
   //const isMobile = useMediaQuery(theme.breakpoints.up("sm"))
 
-  console.log(theme.typography.h1)
+  //console.log(theme.typography.h1)
   const menuItems = [
     {
       title: 'HOME',
@@ -168,11 +169,11 @@ const Navbar = ({themeMode, handleToggleThemeMode}) => {
                 {menuItems.map(menuItem => {
                   const { title, pageUrl } = menuItem
                   return (
-                    <IconButton className={classes.iconButton}>
+                    <Button className={classes.iconButton}>
                       <Link to={pageUrl} className={classes.menuItem}>
                         {title}
                       </Link>
-                    </IconButton>
+                    </Button>
                   )
                 })}
               </Grid>

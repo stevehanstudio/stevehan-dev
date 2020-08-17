@@ -10,7 +10,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 const ProjectTemplate = ({ data}) => {
   const {
     mdx: {
-      frontmatter:{ title, category, skills, image, date },
+      frontmatter:{ title, skills, image, date },
       body
     }
   } = data
@@ -20,7 +20,6 @@ const ProjectTemplate = ({ data}) => {
       <article>
         <Image fluid={image.childImageSharp.fluid} />
         <div className="project-info">
-          <span>{category}</span>
           <h2>{title}</h2>
           <p>{date}</p>
           <div className="underline"></div>
@@ -29,21 +28,17 @@ const ProjectTemplate = ({ data}) => {
           {body}
         </MDXRenderer>
       </article>
-      {/*<article>
-        <Banner />
-      </article>*/}
     </Wrapper>
   </Layout>
 }
 
 export const query = graphql`
-  query GetSingleProject($slug: String) {
+  query GetSinglePost($slug: String) {
     mdx(frontmatter: {slug: {eq: $slug}}) {
       frontmatter {
         title
-        category
+        skills
         date(formatString: "MMM Do, YYYY")
-        readTime
         slug
         image {
           childImageSharp {
@@ -53,6 +48,7 @@ export const query = graphql`
           }
         }
       }
+      body
     }
   }
 `

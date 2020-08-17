@@ -16,8 +16,14 @@ const useStyles = makeStyles(theme => ({
   margin: 0,
   },
   main: {
-    margin: '20px auto',
+    marginTop: '20px',
+    marginBottom: '20px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    paddingBottom: '1000px',
     maxWidth: '1200px',
+    display: 'flex',
+    flexDirection: 'column',
   },
   wrapper: {
     paddingBottom: '5.5rem', 

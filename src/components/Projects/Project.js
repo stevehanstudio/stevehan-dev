@@ -1,51 +1,87 @@
 import React from 'react'
 import Image from 'gatsby-image'
 import BackgroundImage from 'gatsby-background-image'
-import { Paper, Card } from '@material-ui/core'
+import { Grid, Paper, Card, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
-import { Link } from 'gatsby-theme-material-ui'
+import { Link } from 'gatsby'
+//import { Link } from 'gatsby-theme-material-ui'
 import { FaRegClock } from 'react-icons/fa'
 import { IoMdArrowRoundForward } from 'react-icons/io'
 import styled from 'styled-components'
 import SocialLinks from '../../constants/socialLinks'
-
+/*
+const fadeIn = keyframes`
+  from {
+    background-color: rgb(255,255,255,0.2)
+  }
+  to {
+    background-color: 'rbg(0.0.0.0.4'
+  }
+`
+*/
 const useStyles = makeStyles({
-  //projTitle: {
-  //  padding: '5px',
-  //},
+  projTitle: {
+    placeItems: 'center',
+    height: '100%',
+    transform: 'translateY(40%)',
+    letterSpacing: '0.4rem',
+    minHeight: '250px',
+    padding: '5px',
+    textAlign: 'center',
+    margin: '2rem',
+    color: 'rgb(255,255,255,0.5)',
+    //color: 'white',
+    //mixBlendMode: 'difference',
+    zIndex: '999',
+    '&:hover': {
+      color: 'rgb(255,255,255,1)',
+      //Background: 'black',
+    },
+//    opacity: '0.5',
+    verticalAlign: 'middle',
+    textDecoration: 'none',
+//    width: '50px',
+  },
   projContainer: {
     height: '250px',
     width: '100%',
+    minWidth: '250px',
   },
   image: {
     height: '100%',
+    minHeight: '250px', 
     objectFit: 'cover',
+    placeItems: 'center',
+//    animation: `${fadeIn} 2s ease-in-out 1 forwards`
+//    backgroundColor: 'rbg(0,0,0,0.5)',
+    '&hover': {
+      opacity: '0.5',
+      transform: 'scale(1.1, 1.1)'
+    }
   }
 })
 
 const Project = ({ frontmatter, excerpt }) => {
-  const { title, image, slug, date, category, readTime } = frontmatter;
-  const test_string = slug
+  const { title, image, slug, date, skills } = frontmatter;
+//  const test_string = slug
   const classes = useStyles()
-  console.log(frontmatter)
+//  console.log(frontmatter)
   
   return (
-    <Paper className={classes.projContainer}>
+    <>
       <BackgroundImage
-        //        Tag="section"
+        //Tag="div"
         className={classes.image}
         fluid={image.childImageSharp.fluid}
-        backgroundColor={`#040e18`}
+//        backgroundColor={`#040e18`}
+       // preserveStackingContext={true}
       >
         <Link to={`/projects/${slug}`} className={classes.projTitle}>
-          <h2>{title}</h2>
-          <br />
-          Learn more
-          <IoMdArrowRoundForward />
+          <Typography variant="h5" className={classes.projTitle}>{title}</Typography>
         </Link>
         {/*<SocialLinks styleClass="proj-icons" />*/}
       </BackgroundImage>
-    </Paper>
+    </>
   )
 }
 

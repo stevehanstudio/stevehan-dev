@@ -18,6 +18,9 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'wrap',
     //columnGap: '1rem',
   },
+  projContainer: {
+    minWidth: '250px',
+  }
 }))
 
 const Projects = ({projects,title}) => {
@@ -25,13 +28,13 @@ const Projects = ({projects,title}) => {
 
   return (
     <Paper square elevation={0} className={classes.root}>
-      <Typography variant="h2" className={classes.projectsTitle}>
+      <Typography variant="h3" className={classes.projectsTitle}>
         {title}
       </Typography>
       <Grid container spacing={2}>
         {projects.map(project => {
           return (
-            <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+            <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
               <Project key={project.id} {...project} />
             </Grid>
           )
