@@ -10,7 +10,12 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 const ProjectTemplate = ({ data}) => {
   const {
     mdx: {
-      frontmatter:{ title, skills, image, date },
+      frontmatter: { 
+        title, 
+        skills, 
+        image, 
+        date 
+      },
       body
     }
   } = data

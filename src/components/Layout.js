@@ -9,18 +9,18 @@ const darkPrimary = "#031b40"
 
 const useStyles = makeStyles(theme => ({
   root: {
-  minHeight: '100vh',
-  overflowY: 'hidden',
-  overflowX: 'hidden',
-  padding: 0,
-  margin: 0,
+    minHeight: '100vh',
+    overflowY: 'hidden',
+    overflowX: 'hidden',
+    padding: 0,
+    margin: 0,
   },
   main: {
     marginTop: '20px',
     marginBottom: '20px',
     marginLeft: 'auto',
     marginRight: 'auto',
-    paddingBottom: '1000px',
+//    paddingBottom: '1000px',
     maxWidth: '1200px',
     display: 'flex',
     flexDirection: 'column',

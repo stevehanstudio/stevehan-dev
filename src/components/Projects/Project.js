@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'gatsby-image'
 import BackgroundImage from 'gatsby-background-image'
-import { Grid, Paper, Card, Typography } from '@material-ui/core'
+import { Grid, Paper, Card, Typography, Hidden } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import { Link } from 'gatsby'
 //import { Link } from 'gatsby-theme-material-ui'
@@ -19,47 +19,48 @@ const fadeIn = keyframes`
   }
 `
 */
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
+  projContainer: {
+    placeItems: 'center',
+    display: 'flex',
+    minHeight: '250px',
+    //alignItems: 'center',
+    textDecoration: 'none',
+    width: '100%',
+    height: '100%',
+    borderRadius: '20px',
+    //background: 'rgb(255,255,255,0.6)',
+    background: 'rgb(0,0,0,0.6)',
+    transition: '0.7s',
+    transitionTimingFunction: 'ease-in-out',
+    '&:hover': {
+      opacity: '0',
+    },
+  },
   projTitle: {
     placeItems: 'center',
-    height: '100%',
-    transform: 'translateY(40%)',
-    letterSpacing: '0.4rem',
-    minHeight: '250px',
-    padding: '5px',
-    textAlign: 'center',
-    margin: '2rem',
-    color: 'rgb(255,255,255,0.5)',
-    //color: 'white',
-    //mixBlendMode: 'difference',
-    zIndex: '999',
-    '&:hover': {
-      color: 'rgb(255,255,255,1)',
-      //Background: 'black',
-    },
-//    opacity: '0.5',
-    verticalAlign: 'middle',
-    textDecoration: 'none',
-//    width: '50px',
-  },
-  projContainer: {
-    height: '250px',
     width: '100%',
-    minWidth: '250px',
+    height: '100%',
+    //margin: '0 auto',
+    color: theme.palette.text.primary,
+    //color: 'white',
+    //    color: 'black',
+    fontWeight: '500',
+    textAlign: 'center',
+    letterSpacing: '0.2rem',
   },
   image: {
     height: '100%',
-    minHeight: '250px', 
-    objectFit: 'cover',
+    backgroundSize: '',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    minHeight: '250px',
+    borderRadius: '20px',
+    overflow: 'hidden',
+    //objectFit: 'cover',
     placeItems: 'center',
-//    animation: `${fadeIn} 2s ease-in-out 1 forwards`
-//    backgroundColor: 'rbg(0,0,0,0.5)',
-    '&hover': {
-      opacity: '0.5',
-      transform: 'scale(1.1, 1.1)'
-    }
-  }
-})
+  },
+}))
 
 const Project = ({ frontmatter, excerpt }) => {
   const { title, image, slug, date, skills } = frontmatter;
@@ -73,10 +74,10 @@ const Project = ({ frontmatter, excerpt }) => {
         //Tag="div"
         className={classes.image}
         fluid={image.childImageSharp.fluid}
-//        backgroundColor={`#040e18`}
-       // preserveStackingContext={true}
+        //backgroundColor={`#040e18`}
+        //preserveStackingContext={true}
       >
-        <Link to={`/projects/${slug}`} className={classes.projTitle}>
+        <Link to={`/projects/${slug}`} className={classes.projContainer}>
           <Typography variant="h5" className={classes.projTitle}>{title}</Typography>
         </Link>
         {/*<SocialLinks styleClass="proj-icons" />*/}
@@ -84,13 +85,14 @@ const Project = ({ frontmatter, excerpt }) => {
     </>
   )
 }
-
+/*
 const Wrapper = styled.article`
   margin-bottom: 3rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   column-gap: 1rem;
+  background: black;
   .proj-container {
     height: 17rem;
     width: 24rem;
@@ -112,7 +114,7 @@ const Wrapper = styled.article`
   /*  line-height: 5rem;
     padding-top: 2rem;
     margin-top: 2rem;*/
-    position: absolute;
+/*    position: absolute;
     top: 32%;
     left: 27%;
   }
@@ -236,5 +238,5 @@ const Wrapper = styled.article`
     }
   }
 `
-
+*/
 export default Project

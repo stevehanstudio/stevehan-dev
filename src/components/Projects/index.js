@@ -18,9 +18,10 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'wrap',
     //columnGap: '1rem',
   },
-  projContainer: {
-    minWidth: '250px',
-  }
+  projItem: {
+    placeItems: 'center',
+    borderRadius: '25px',
+  },
 }))
 
 const Projects = ({projects,title}) => {
@@ -34,7 +35,15 @@ const Projects = ({projects,title}) => {
       <Grid container spacing={2}>
         {projects.map(project => {
           return (
-            <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
+            <Grid
+              className={classes.projectItem}
+              item
+              xs={12}
+              sm={6}
+              md={4}
+              lg={4}
+              xl={4}
+            >
               <Project key={project.id} {...project} />
             </Grid>
           )

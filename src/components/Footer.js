@@ -6,14 +6,14 @@ import { FaFileExcel } from 'react-icons/fa'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'block',
-    position: 'absolute',
-    bottom: 0,
+//    display: 'block',
+//    position: 'absolute',
+//    bottom: 0,
     width: '100%',
-    height: '5.5rem',
+//    height: '5.5rem',
     alignContent: 'center',
     alignItems: 'center',
-  },
+  }, 
   container: {
     display: 'block',
     alignContent: 'center',
@@ -50,7 +50,7 @@ const Footer = () => {
       className={classes.root}
     >
       <Divider />
-      <Box component="div" display="block" className={classes.items}>
+      <Box component="div" display="inline-block" className={classes.items}>
         <SocialLinks />
       </Box>
       <Grid item className={classes.items}>

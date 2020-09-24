@@ -1,24 +1,6 @@
 module.exports = {
   plugins: [
     `gatsby-theme-material-ui`,
-    {
-      resolve: `gatsby-theme-material-ui`,
-      options: {
-        webFontsConfig: {
-          fonts: {
-            google: [
-              {
-                family: "material icons",
-              },
-              {
-                family: `Roboto`,
-                variants: [`200`, `300`, `400`, `500`, `600`, `700`],
-              },
-            ],
-          },
-        },
-      },
-    },
     `gatsby-plugin-mdx`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,

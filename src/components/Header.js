@@ -15,8 +15,8 @@ const useStyles = makeStyles(theme => ({
     padding: 0,
     margin: theme.spacing(1),
     position: 'absolute',
-    top: 0,
-    right: 0,
+    top: '0.5rem',
+    right: '1.6rem',
   },
   switchBase: {
     padding: 1,
