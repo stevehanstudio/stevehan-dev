@@ -92,9 +92,9 @@ const SocialLinks = () => {
         }}
       >
         <IconButton className={classes.iconButton}>
-          <Link to="https://linkedin.com/in/stevehanphoto" target="_BLANK">
+          <a href="https://linkedin.com/in/stevehanphoto" target="_BLANK">
             <FaLinkedin className={classes.socialIcon}></FaLinkedin>
-          </Link>
+          </a>
         </IconButton>
       </Tooltip>
       <Tooltip
@@ -112,9 +112,9 @@ const SocialLinks = () => {
         }}
       >
         <IconButton className={classes.iconButton}>
-          <Link to="https://github.com/stevehanstudio" target="_BLANK">
+          <a href="https://github.com/stevehanstudio" target="_BLANK">
             <FaGithubSquare className={classes.socialIcon}></FaGithubSquare>
-          </Link>
+          </a>
         </IconButton>
       </Tooltip>
       <Tooltip
@@ -132,13 +132,13 @@ const SocialLinks = () => {
         }}
       >
         <IconButton className={classes.iconButton}>
-          <Link to="https://github.com/stevehanstudio" target="_BLANK">
+          <a href="https://github.com/stevehanstudio" target="_BLANK">
             <SvgIcon
               component={ResumeIcon}
               className={classes.resumeIcon}
               viewBox="0 0 228 50"
             />
-          </Link>
+          </a>
         </IconButton>
       </Tooltip>
     </Grid>

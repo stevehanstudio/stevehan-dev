@@ -7,52 +7,72 @@ import { Divider } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles(theme => ({
-   root: {
-      flexGrow: 1,
-      marginBottom: '50px'
-   },
-   skillsBtn: {
-      margin: '5px',
-      backgroundColor: 'blue',
-      border: '2px solid lightgrey'
-   },
-   selectedBtn: {
-      opacity: '1',
-   },
-   unselectedBtn: {
-      backgroundColor: 'transparent',
-      opacity: '0.5',
-   },
-   projectsTitle: {
-      /*font-weight: 700;*/
-      textTransform: 'uppercase',
-      marginBottom: '1.2rem',
-   },
-   projectsContainer: {
-      display: 'flex',
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      //columnGap: '1rem',
-   },
-   closeBtn: {
-      paddingLeft: '1.2rem',
-      float: 'right',
-      opacity: 0.5,
-      "&:hover": {
-         opacity: 1,
-         cursor: 'pointer'
-      }
-   },
-   showSkills: {
-      opacity: 0.8,
-      "&:hover": {
-         opacity: 1,
-         cursor: 'pointer'
-      }
-   }
+  root: {
+    flexGrow: 1,
+    marginBottom: '50px',
+  },
+  skillsBtn: {
+    margin: '5px',
+    backgroundColor: 'transparent',
+    border: '2px solid white',
+    '&:hover': {
+      opacity: 1,
+      backgroundColor: 'rgba(255,255,255,0.85)',
+      cursor: 'pointer',
+    },
+    '&:active': {
+      opacity: 1,
+      backgroundColor: 'rgba(255,255,255,0.8)',
+    },
+  },
+  selectedBtn: {
+    opacity: '1',
+    backgroundColor: 'rgba(0,0,0,0.1)',
+  },
+  unselectedBtn: {
+    //backgroundColor: 'transparent',
+    opacity: '0.4',
+  },
+  projectsTitle: {
+    /*font-weight: 700;*/
+    textTransform: 'uppercase',
+    marginBottom: '1.2rem',
+  },
+  projectsContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    //columnGap: '1rem',
+  },
 }))
 
-const Skills = ({ featuredSkills, moreSkills, skills, handleToggleSkill, title }) => {
+const Skills = ({ skills, showAll, handleToggleSkill, title }) => {
+   const classes = useStyles()
+
+   return (
+      <Paper square elevation={0} className={classes.root}>
+         <Typography variant="h4" className={classes.projectsTitle}>
+            {title}
+         </Typography>
+         <Grid container spacing={2} direction="row" >
+            {Object.keys(skills).map((skill, index) => {
+               return (
+                  <Chip
+                     key={index}
+                     className={`${classes.skillsBtn} ${
+                        (skills[skill] || showAll) ? classes.selectedBtn : classes.unselectedBtn
+                     }`}
+                     label={skill}
+                     onClick={() => handleToggleSkill(skill)}
+                  />
+               )
+            })}
+         </Grid>
+      </Paper>
+   )
+}
+
+/*const Skills = ({ featuredSkills, moreSkills, skills, handleToggleSkill, title }) => {
    const classes = useStyles()
    const [showMoreSkills, setShowMoreSkills] = useState(false)
 
@@ -102,7 +122,7 @@ const Skills = ({ featuredSkills, moreSkills, skills, handleToggleSkill, title }
       </Paper>
    )
 }
-
+*/
 export default Skills
 
 /*

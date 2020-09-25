@@ -3,7 +3,7 @@ import Image from 'gatsby-image'
 import BackgroundImage from 'gatsby-background-image'
 import { Grid, Paper, Card, Typography, Hidden } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
-import { Link } from 'gatsby'
+//import { Link } from 'gatsby'
 //import { Link } from 'gatsby-theme-material-ui'
 import { FaRegClock } from 'react-icons/fa'
 import { IoMdArrowRoundForward } from 'react-icons/io'
@@ -28,24 +28,33 @@ const useStyles = makeStyles(theme => ({
     textDecoration: 'none',
     width: '100%',
     height: '100%',
-    borderRadius: '20px',
+    borderRadius: '15px',
     //background: 'rgb(255,255,255,0.6)',
     background: 'rgb(0,0,0,0.6)',
     transition: '0.7s',
     transitionTimingFunction: 'ease-in-out',
     '&:hover': {
+      boxSizing: 'padding-box',
       opacity: '0',
+      //border: '10px solid white',
+      outline: 'thick solid #00ff00',
+      //outlineStyle: 'outset',
+      boxShadow: '1px 1px 2px grey, 0 0 25px orange, 0 0 5px white',
     },
   },
   projTitle: {
-    placeItems: 'center',
+    //placeItems: 'center',
+    display: 'flex',
     width: '100%',
     height: '100%',
+    borderRadius: '15px',
     //margin: '0 auto',
     color: theme.palette.text.primary,
     //color: 'white',
     //    color: 'black',
     fontWeight: '500',
+    alignItems: 'center',
+    justifyContent: 'center',
     textAlign: 'center',
     letterSpacing: '0.2rem',
   },
@@ -55,7 +64,7 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     minHeight: '250px',
-    borderRadius: '20px',
+    borderRadius: '15px',
     overflow: 'hidden',
     //objectFit: 'cover',
     placeItems: 'center',
@@ -77,9 +86,9 @@ const Project = ({ frontmatter, excerpt }) => {
         //backgroundColor={`#040e18`}
         //preserveStackingContext={true}
       >
-        <Link to={`/projects/${slug}`} className={classes.projContainer}>
+        <a href={`/projects/${slug}`} className={classes.projContainer}>
           <Typography variant="h5" className={classes.projTitle}>{title}</Typography>
-        </Link>
+        </a>
         {/*<SocialLinks styleClass="proj-icons" />*/}
       </BackgroundImage>
     </>

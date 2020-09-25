@@ -27,11 +27,5 @@ module.exports = {
         gatsbyRemarkPlugins: [{ resolve: 'gatsby-remark-images' }],
       },
     },
-    {
-      resolve: `gatsby-source-instagram`,
-      options: {
-        username: `gatsbyjs`,
-      },
-    },
   ],
 }

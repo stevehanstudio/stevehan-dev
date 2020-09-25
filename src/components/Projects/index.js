@@ -36,6 +36,7 @@ const Projects = ({projects,title}) => {
         {projects.map(project => {
           return (
             <Grid
+              key={project.id}
               className={classes.projectItem}
               item
               xs={12}
@@ -44,7 +45,7 @@ const Projects = ({projects,title}) => {
               lg={4}
               xl={4}
             >
-              <Project key={project.id} {...project} />
+              <Project {...project} />
             </Grid>
           )
         })}

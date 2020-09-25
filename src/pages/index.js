@@ -37,22 +37,49 @@ const IndexPage = () => {
     }
   `)
 
-  const handleToggleSkill = skill => {
-    setSkills({
-      ...skills, 
-      [skill]: !skills[skill]
-    })
-    console.log("handleToggleSkills", skills)
-  }
-
   const { allMdx: { nodes: projects } } = data
 
-  const featuredSkills = ["React", "Javascript", "NodeJS"]
-  const moreSkills = []
   const tempSkills = {}
   const [skills, setSkills] = useState(tempSkills)
-  
+  const [showAll, setShowAll] = useState(true)
+
+  const handleToggleSkill = skill => {
+    const tmpSkills = {}
+    if (showAll) {
+      Object.keys(skills).map(s => {
+        //console.log(`In handleToggleSkill: skill=${skill}, s=${s}, tmpSkills=${tmpSkills}`)
+        if (s === skill) {
+          tmpSkills[s] = true
+        } else {
+          tmpSkills[s] = false
+        }
+      })
+      console.log("tmpSkills", tmpSkills)
+      setSkills(tmpSkills)
+      setShowAll(false)
+    } else {
+      // should we handle setShowAll
+      setSkills({
+        ...skills,
+        [skill]: !skills[skill],
+      })
+      console.log("handleToggleSkills setting skills!", skill, skills)
+    }
+    console.log('handleToggleSkills', skill, skills)
+  }
+
   projects.map(project => {
+    project.frontmatter.skills.map(skill => {
+      if (tempSkills[skill] === undefined) {        
+        tempSkills[skill] = false
+        //console.log(`Setting skill: ${skill}`)
+      }
+      //console.log('frontmatter', project, skill, tempSkills)
+    })
+  })
+//  setSkills(tempSkills)
+
+  /*  projects.map(project => {
     project.frontmatter.skills.map(skill => {
       console.log("frontmatter", skill, featuredSkills)
       if (featuredSkills.includes(skill)) {        
@@ -68,14 +95,15 @@ const IndexPage = () => {
       }
     })
     console.log(skills)
-  })
+  })*/
+
+  console.log('skills in index', skills)
 
   return (
     <Layout>
       <Skills 
-        featuredSkills={featuredSkills}
-        moreSkills={moreSkills} 
         skills={skills} 
+        showAll={showAll}
         handleToggleSkill={handleToggleSkill} 
         title="Skills" />
       <Divider />
