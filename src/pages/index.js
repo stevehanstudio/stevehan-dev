@@ -18,10 +18,13 @@ const IndexPage = () => {
         nodes {
           frontmatter {
             title
+            subtitle
             slug
             date(formatString: "MMM Do, YYYY")
             author
             skills
+            website
+            github
             image {
               childImageSharp {
                 fluid {

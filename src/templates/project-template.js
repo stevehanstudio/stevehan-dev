@@ -11,30 +11,39 @@ const ProjectTemplate = ({ data}) => {
   const {
     mdx: {
       frontmatter: { 
-        title, 
+        title,
+        subtitle, 
         skills, 
         image, 
-        date 
+        date,
+        website,
+        github
       },
       body
     }
   } = data
 
-  return <Layout>
-    <Wrapper>
-      <article>
-        <Image fluid={image.childImageSharp.fluid} />
-        <div className="project-info">
-          <h2>{title}</h2>
-          <p>{date}</p>
-          <div className="underline"></div>
-        </div>
-        <MDXRenderer>
-          {body}
-        </MDXRenderer>
-      </article>
-    </Wrapper>
-  </Layout>
+  return (
+    <Layout>
+      <Wrapper>
+        <article>
+          <Image fluid={image.childImageSharp.fluid} />
+          <div className="project-info">
+            <h2>{title}</h2>
+            <p>{date}</p>
+            <a href={website} target="_blank" rel="noopener noreferrer" alt={title}>
+              Visit Website
+            </a>
+            <a href={github} target="_blank" rel="noopener noreferrer" alt={`${title} Source code Github`}>
+              Source Code
+            </a>
+            <div className="underline"></div>
+          </div>
+          <MDXRenderer>{body}</MDXRenderer>
+        </article>
+      </Wrapper>
+    </Layout>
+  )
 }
 
 export const query = graphql`
@@ -43,8 +52,11 @@ export const query = graphql`
       frontmatter {
         title
         skills
+        subtitle
         date(formatString: "MMM Do, YYYY")
         slug
+        website
+        github
         image {
           childImageSharp {
             fluid {

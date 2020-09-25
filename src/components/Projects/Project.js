@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'gatsby-image'
 import BackgroundImage from 'gatsby-background-image'
-import { Grid, Paper, Card, Typography, Hidden } from '@material-ui/core'
+import { Grid, Paper, Box, Card, Typography, Hidden } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 //import { Link } from 'gatsby'
 //import { Link } from 'gatsby-theme-material-ui'
@@ -34,12 +34,28 @@ const useStyles = makeStyles(theme => ({
     transition: '0.7s',
     transitionTimingFunction: 'ease-in-out',
     '&:hover': {
-      boxSizing: 'padding-box',
-      opacity: '0',
+      '& $front': {
+        display: 'none',
+      },
+      '& $back': {
+        position: 'absolute',
+        //        display: 'block',
+        top: '0',
+        color: 'white',
+        display: 'flex',
+        flexDirection: 'column',
+        top: '0',
+        zIndex: '9000',
+        color: 'white',
+        fontSize: '1.1rem',
+        textAlign: 'center',
+      },
+      //boxSizing: 'padding-box',
+      //opacity: '0',
       //border: '10px solid white',
-      outline: 'thick solid #00ff00',
+      //outline: 'thick solid #00ff00',
       //outlineStyle: 'outset',
-      boxShadow: '1px 1px 2px grey, 0 0 25px orange, 0 0 5px white',
+      //boxShadow: '1px 1px 2px grey, 0 0 25px orange, 0 0 5px white',
     },
   },
   projTitle: {
@@ -58,6 +74,11 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     letterSpacing: '0.2rem',
   },
+  projSubtitle: {
+    paddingTop: '4rem',
+    paddingLeft: '1rem',
+    paddingRight: '1rem',
+  },
   image: {
     height: '100%',
     backgroundSize: '',
@@ -69,10 +90,37 @@ const useStyles = makeStyles(theme => ({
     //objectFit: 'cover',
     placeItems: 'center',
   },
+  front: {
+    position: 'relative',
+    //    visibility: 'visible',
+    width: '100%',
+    textAlign: 'center',
+    opacity: '1',
+    display: 'block',
+  },
+  back: {
+    display: 'none',
+    transition: '0.7s',
+    transitionTimingFunction: 'ease-in-out',
+  },
+  iconLinks: {
+    marginTop: '1rem',
+  },
+  iconLink: {
+    padding: '0.6rem 1rem',
+    margin: '1rem',
+    borderRadius: '5px',
+    border: `1px solid ${theme.palette.text.primary}`,
+    color: theme.palette.text.primary,
+    background: 'transparent',
+    '&:hover': {
+      background: 'rgba(255,255,255,0.1)',
+    }
+  },
 }))
 
 const Project = ({ frontmatter, excerpt }) => {
-  const { title, image, slug, date, skills } = frontmatter;
+  const { title, subtitle, image, slug, date, skills, website, github } = frontmatter
 //  const test_string = slug
   const classes = useStyles()
 //  console.log(frontmatter)
@@ -86,10 +134,42 @@ const Project = ({ frontmatter, excerpt }) => {
         //backgroundColor={`#040e18`}
         //preserveStackingContext={true}
       >
-        <a href={`/projects/${slug}`} className={classes.projContainer}>
-          <Typography variant="h5" className={classes.projTitle}>{title}</Typography>
+        <a
+          href={website || github}
+          target="_blank"
+          rel="noopener noreferrer"
+          alt={title}
+          className={classes.projContainer}
+        >
+          <Box className={classes.front}>
+            <Typography variant="h5" className={classes.projTitle}>
+              {title}
+            </Typography>
+          </Box>
+          <Box className={classes.back}>
+            <Typography variant="p" className={classes.projSubtitle}>
+              {subtitle}
+            </Typography>
+            <Box className={classes.iconLinks}>
+              {website && (<a
+                href={website}
+                target="_blank"
+                rel="noopener noreferrer"
+                alt={title}
+              >
+                <button className={classes.iconLink}>Visit Website</button>
+              </a>)}
+              <a
+                href={github}
+                target="_blank"
+                rel="noopener noreferrer"
+                alt={`${title} Source code Github`}
+              >
+                <button className={classes.iconLink}>Source Code</button>
+              </a>
+            </Box>
+          </Box>
         </a>
-        {/*<SocialLinks styleClass="proj-icons" />*/}
       </BackgroundImage>
     </>
   )
