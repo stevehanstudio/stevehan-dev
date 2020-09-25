@@ -49,7 +49,10 @@ const Layout = ({children}) => {
       //primary: yellow
       text: {
         primary: darkPrimary,
-      }
+      },
+      background: {
+        secondary: 'rgb(255,255,255,0.6)',
+      },
     },
   })
 
@@ -61,6 +64,7 @@ const Layout = ({children}) => {
       type: 'dark',
       background: {
         //paper: '#010b13',
+        secondary: 'rgb(0,0,0,0.6)',
         paper: darkPrimary,
         //paper: 'linear- gradient(to right bottom, #430089, #82ffa1)',
         //default: '#010b13',

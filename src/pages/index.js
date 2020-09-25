@@ -104,12 +104,12 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <Skills 
+      {/*      <Skills 
         skills={skills} 
         showAll={showAll}
         handleToggleSkill={handleToggleSkill} 
         title="Skills" />
-      <Divider />
+      <Divider />*/}
       <Box mt={3} mb={3}>
         <Projects projects={projects} title="Projects" />
       </Box>

@@ -128,16 +128,16 @@ const Navbar = ({themeMode, handleToggleThemeMode}) => {
   const menuItems = [
     {
       title: 'HOME',
-      pageURL: '/'
+      pageUrl: '/'
     },
     {
       title: 'ABOUT',
       pageUrl: '/about'
     },
-    {
+/*    {
       title: 'CONTACT',
       pageUrl: '/contact'
-    }
+    }*/
   ]
 
   return (

@@ -13,11 +13,11 @@ const Links = ({ styleClass, children }) => {
           About
         </Link>
       </li>
-      <li>
+{/*      <li>
         <Link to="/contact" className="page-link">
           Contact
         </Link>
-      </li>
+      </li>*/}
     </ul>
   )
 }

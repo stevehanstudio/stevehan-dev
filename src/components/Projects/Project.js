@@ -28,9 +28,11 @@ const useStyles = makeStyles(theme => ({
     textDecoration: 'none',
     width: '100%',
     height: '100%',
-    borderRadius: '15px',
+    //    borderRadius: '25px',
     //background: 'rgb(255,255,255,0.6)',
-    background: 'rgb(0,0,0,0.6)',
+    //background: 'rgb(0,0,0,0.6)',
+    background: theme.palette.background.secondary,
+    boxShadow: '4px 4px 8px 2px rgba(0,0,0,0.2)',
     transition: '0.7s',
     transitionTimingFunction: 'ease-in-out',
     '&:hover': {
@@ -63,7 +65,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     width: '100%',
     height: '100%',
-    borderRadius: '15px',
+    //  borderRadius: '25px',
     //margin: '0 auto',
     color: theme.palette.text.primary,
     //color: 'white',
@@ -78,6 +80,7 @@ const useStyles = makeStyles(theme => ({
     paddingTop: '4rem',
     paddingLeft: '1rem',
     paddingRight: '1rem',
+    color: theme.palette.text.primary,
   },
   image: {
     height: '100%',
@@ -85,8 +88,9 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     minHeight: '250px',
-    borderRadius: '15px',
+    borderRadius: '25px',
     overflow: 'hidden',
+    boxShadow: '2px 2px 4px rgba(0,0,0,0.3)',
     //objectFit: 'cover',
     placeItems: 'center',
   },
@@ -115,7 +119,8 @@ const useStyles = makeStyles(theme => ({
     background: 'transparent',
     '&:hover': {
       background: 'rgba(255,255,255,0.1)',
-    }
+      cursor: 'pointer',
+    },
   },
 }))
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Paper, Typography, Grid, Chip, Collapse } from '@material-ui/core'
+import { Paper, Box, Typography, Grid, Chip, Collapse } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import { Divider } from '@material-ui/core'
@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   skillsBtn: {
     margin: '5px',
     backgroundColor: 'transparent',
-    border: '2px solid white',
+    border: `2px solid ${theme.palette.text.primary}`,
     '&:hover': {
       opacity: 1,
       backgroundColor: 'rgba(255,255,255,0.85)',
@@ -50,25 +50,29 @@ const Skills = ({ skills, showAll, handleToggleSkill, title }) => {
    const classes = useStyles()
 
    return (
-      <Paper square elevation={0} className={classes.root}>
+     <Paper square elevation={0} className={classes.root}>
+       <Box ml={2} mr={2}>
          <Typography variant="h4" className={classes.projectsTitle}>
-            {title}
+           {title}
          </Typography>
-         <Grid container spacing={2} direction="row" >
-            {Object.keys(skills).map((skill, index) => {
-               return (
-                  <Chip
-                     key={index}
-                     className={`${classes.skillsBtn} ${
-                        (skills[skill] || showAll) ? classes.selectedBtn : classes.unselectedBtn
-                     }`}
-                     label={skill}
-                     onClick={() => handleToggleSkill(skill)}
-                  />
-               )
-            })}
+         <Grid container spacing={2} direction="row">
+           {Object.keys(skills).map((skill, index) => {
+             return (
+               <Chip
+                 key={index}
+                 className={`${classes.skillsBtn} ${
+                   skills[skill] || showAll
+                     ? classes.selectedBtn
+                     : classes.unselectedBtn
+                 }`}
+                 label={skill}
+                 onClick={() => handleToggleSkill(skill)}
+               />
+             )
+           })}
          </Grid>
-      </Paper>
+       </Box>
+     </Paper>
    )
 }
 

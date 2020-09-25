@@ -132,7 +132,7 @@ const SocialLinks = () => {
         }}
       >
         <IconButton className={classes.iconButton}>
-          <a href="https://github.com/stevehanstudio" target="_BLANK">
+          <a href="./SteveHanDevResume.pdf" target="_BLANK">
             <SvgIcon
               component={ResumeIcon}
               className={classes.resumeIcon}

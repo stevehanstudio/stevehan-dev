@@ -1,6 +1,6 @@
 import React from 'react'
 import Project from './Project'
-import { Paper, Typography, Grid } from '@material-ui/core'
+import { Paper, Box, Typography, Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles(theme => ({
@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
   projItem: {
     placeItems: 'center',
-    borderRadius: '25px',
+//    borderRadius: '25px',
   },
 }))
 
@@ -29,27 +29,29 @@ const Projects = ({projects,title}) => {
 
   return (
     <Paper square elevation={0} className={classes.root}>
-      <Typography variant="h3" className={classes.projectsTitle}>
-        {title}
-      </Typography>
-      <Grid container spacing={2}>
-        {projects.map(project => {
-          return (
-            <Grid
-              key={project.id}
-              className={classes.projectItem}
-              item
-              xs={12}
-              sm={6}
-              md={4}
-              lg={4}
-              xl={4}
-            >
-              <Project {...project} />
-            </Grid>
-          )
-        })}
-      </Grid>
+      <Box ml={2} mr={2}>
+        <Typography variant="h3" className={classes.projectsTitle}>
+          {title}
+        </Typography>
+        <Grid container spacing={3}>
+          {projects.map(project => {
+            return (
+              <Grid
+                key={project.id}
+                className={classes.projItem}
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                lg={4}
+                xl={4}
+              >
+                <Project {...project} />
+              </Grid>
+            )
+          })}
+        </Grid>
+      </Box>
     </Paper>
   )
 }
