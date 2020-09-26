@@ -128,7 +128,7 @@ const Project = ({ frontmatter, excerpt }) => {
   const { title, subtitle, image, slug, date, skills, website, github } = frontmatter
 //  const test_string = slug
   const classes = useStyles()
-//  console.log(frontmatter)
+  console.log(frontmatter)
   
   return (
     <>
