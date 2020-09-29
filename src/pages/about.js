@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import { Paper, Box, Typography, Grid, Divider } from '@material-ui/core'
+import { Paper, Box, Typography, Divider } from '@material-ui/core'
 
 const About = () => {
   return (

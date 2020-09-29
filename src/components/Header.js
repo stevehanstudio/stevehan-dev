@@ -1,22 +1,42 @@
-import React from 'react'
-//import { Link } from 'gatsby-theme-material-ui'
+import React, { useContext } from 'react'
 import { Link } from 'gatsby'
-import { FaBars } from 'react-icons/fa'
-import { AppBar, Toolbar, Paper, Grid, Divider, Button, IconButton, Typography, Container, Switch, Tooltip, useMediaQuery, Grow } from '@material-ui/core'
+import {
+  AppBar,
+  Toolbar,
+  Paper,
+  Grid,
+  Button,
+  IconButton,
+  Typography,
+  Switch,
+  Hidden,
+} from '@material-ui/core'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import Links from '../constants/links'
-import SocialLinks from '../constants/socialLinks'
-//import { GitHubIcon, LinkedInIcon } from '@material-ui/icons';
+//import { GitHubIcon, LinkedInIcon } from '@material-ui/icons'
+import { MenuRounded } from '@material-ui/icons'
+import { GatsbyContext } from '../context/context'
+import { navLinks } from '../constants/links'
+import SocialLinks from './SocialLinks'
+import MobileMenu from './MobileMenu'
 
 const useStyles = makeStyles(theme => ({
-  root: {
+  appBar: {
+    zIndex: 1,
+  },
+  switch: {
     width: 48,
     height: 26,
     padding: 0,
     margin: theme.spacing(1),
-    position: 'absolute',
     top: '0.5rem',
     right: '1.6rem',
+    position: 'absolute',
+  },
+  burgerIcon: {
+    position: 'absolute',
+    top: '0.2rem',
+    right: '0.3rem',
+    zIndex: 1,
   },
   switchBase: {
     padding: 1,
@@ -57,12 +77,29 @@ const useStyles = makeStyles(theme => ({
     marginBottom: 0,
     marginTop: theme.spacing(1),
     lineHeight: 1.05,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '4.4rem',
+      letterSpacing: 2,
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '2.6rem',
+      letterSpacing: 1.5,
+    },
   },
   h4: {
-    fontSize: '1.8rem', // original 2.125rem
+    fontSize: '2rem', // original 2.125rem
     fontWeight: 500,
     opacity: 0.78,
-    letterSpacing: 4,
+    letterSpacing: 6,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1.6rem',
+      letterSpacing: 4,
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1.1rem',
+      fontWeight: 400,
+      letterSpacing: 3,
+    },
   },
   themeSwitch: {
     width: 58,
@@ -85,7 +122,7 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: 0,
     marginBottom: 0,
     //    lineHeight: 1,
-        minHeight: '52px',
+    minHeight: '52px',
   },
   menuItems: {
     flexGrow: 1,
@@ -114,46 +151,38 @@ const useStyles = makeStyles(theme => ({
       opacity: 1,
     },
   },
-  /*  socialLinks: {
-    flexGrow: 1,
-  }*/
 }))
 
 const Navbar = ({themeMode, handleToggleThemeMode}) => {
-  const theme = useTheme()
+  const { showMobileMenu } = useContext(GatsbyContext)
+  //const theme = useTheme()
   const classes = useStyles()
-  //const isMobile = useMediaQuery(theme.breakpoints.up("sm"))
-
-  //console.log(theme.typography.h1)
-  const menuItems = [
-    {
-      title: 'HOME',
-      pageUrl: '/'
-    },
-    {
-      title: 'ABOUT',
-      pageUrl: '/about'
-    },
-/*    {
-      title: 'CONTACT',
-      pageUrl: '/contact'
-    }*/
-  ]
 
   return (
-    <AppBar position="relative" elevation={0}>
+    <AppBar className={classes.appBar} position="static" elevation={0}>
+      <MobileMenu />
       <Paper square elevation={0} className={classes.paper}>
-        <Switch
-          classes={{
-            root: classes.root,
-            switchBase: classes.switchBase,
-            thumb: classes.thumb,
-            track: classes.track,
-            checked: classes.checked,
-          }}
-          checked={themeMode}
-          onChange={handleToggleThemeMode}
-        />
+        <Hidden xsDown>
+          <Switch
+            classes={{
+              root: classes.switch,
+              switchBase: classes.switchBase,
+              thumb: classes.thumb,
+              track: classes.track,
+              checked: classes.checked,
+            }}
+            checked={themeMode}
+            onChange={handleToggleThemeMode}
+          />
+        </Hidden>
+        <Hidden smUp>
+          <IconButton
+            className={classes.burgerIcon}
+            onClick={showMobileMenu}
+          >
+            <MenuRounded />
+          </IconButton>
+        </Hidden>
         <Grid container alignItems="center" direction="column">
           <Grid item container alignItems="center" direction="column">
             <Typography variant="h1" className={classes.h1}>
@@ -163,26 +192,27 @@ const Navbar = ({themeMode, handleToggleThemeMode}) => {
               React Developer
             </Typography>
           </Grid>
-          <Grid container>
-            <Toolbar className={classes.toolbar}>
-              <Grid item className={classes.menuItems}>
-                {menuItems.map(menuItem => {
-                  const { title, pageUrl } = menuItem
-                  return (
-                    <Button className={classes.iconButton}>
-                      <Link to={pageUrl} className={classes.menuItem}>
-                        {title}
-                      </Link>
-                    </Button>
-                  )
-                })}
-              </Grid>
-              <Grid item className={classes.socialLinks}>
-                <SocialLinks />
-              </Grid>
-            </Toolbar>
-            {/*<Links styleClass="nav-links" />*/}
-          </Grid>
+          <Hidden xsDown>
+            <Grid container>
+              <Toolbar className={classes.toolbar}>
+                <Grid item className={classes.menuItems}>
+                  {navLinks.map(navLink => {
+                    const { title, pageUrl } = navLink
+                    return (
+                      <Button focusRipple className={classes.iconButton}>
+                        <Link to={pageUrl} className={classes.menuItem}>
+                          {title}
+                        </Link>
+                      </Button>
+                    )
+                  })}
+                </Grid>
+                <Grid item className={classes.socialLinks}>
+                  <SocialLinks />
+                </Grid>
+              </Toolbar>
+            </Grid>
+          </Hidden>
         </Grid>
       </Paper>
     </AppBar>

@@ -2,29 +2,17 @@ import React from "react"
 import {
   Grid,
   Tooltip,
-  //Paper,
-  makeStyles,
   IconButton,
   SvgIcon,
 } from '@material-ui/core'
-import {
+import { makeStyles, useTheme } from '@material-ui/core/styles'
+/*import {
   FaLinkedin,
   FaGithubSquare,
-} from "react-icons/fa"
+} from "react-icons/fa"*/
 import ResumeIcon from '../assets/ResumeIcon'
-import { Link } from 'gatsby-theme-material-ui'
-import { Icon } from '@material-ui/icons'
-import { GitHubIcon, LinkedInIcon } from 'gatsby-theme-material-ui'
-
-/*
-const SocialIconTooltip = withStyles(theme => ({
-  Tooltip: {
-    backgroundColor: 'white',
-    color: 'rgba(0, 0, 0, 0.87)',
-    fontSize: 11,
-  },
-}))(Tooltip)
-*/
+//import { GitHubIcon, LinkedInIcon } from 'gatsby-theme-material-ui'
+import { socialLinks } from '../constants/links'
 
 const useStyles = makeStyles(theme => ({
   tooltip: {
@@ -45,10 +33,6 @@ const useStyles = makeStyles(theme => ({
       opacity: 1,
     },
   },
-/*  materialIcon: {
-    fontFamily: 'Material Icons',
-    fontSize: '24px',
-  },*/
   iconButton: {
     width: '44px',
     height: '44px',
@@ -72,10 +56,79 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const SocialLinks = () => {
+  //const theme = useTheme()
   const classes = useStyles()
-  
+
+//  console.log('socialLinks', socialLinks)
   return (
     <Grid container>
+      {socialLinks.map(socialLink => {
+        const { title, icon, url } = socialLink
+        return (
+          <Tooltip
+            classes={{ tooltip: classes.tooltip }}
+            title={`${title} profile`}
+            arrow
+            square
+            placement="top-start"
+            PopperProps={{
+              modifiers: {
+                offset: {
+                  enabled: true,
+                  offset: '25px,-12px',
+                },
+              },
+            }}
+          >
+            <IconButton className={classes.iconButton}>
+              <a
+                href={url}
+                className={classes.socialIcon}
+                target="_BLANK"
+                rel="noreferrer noopener"
+              >
+                {icon}
+              </a>
+            </IconButton>
+          </Tooltip>
+        )
+      })}
+      <Tooltip
+        classes={{ tooltip: classes.tooltip }}
+        title="Resume"
+        arrow
+        placement="top-start"
+        PopperProps={{
+          modifiers: {
+            offset: {
+              enabled: true,
+              offset: '25px,-12px',
+            },
+          },
+        }}
+      >
+        <IconButton className={classes.iconButton}>
+          <a
+            href="./SteveHanDevResume.pdf"
+            target="_BLANK"
+            rel="noreferrer noopener"
+          >
+            <SvgIcon
+              component={ResumeIcon}
+              className={classes.resumeIcon}
+              viewBox="0 0 228 50"
+            />
+          </a>
+        </IconButton>
+      </Tooltip>
+    </Grid>
+  )
+}
+
+export default SocialLinks
+
+/*
+
       <Tooltip
         classes={{ tooltip: classes.tooltip }}
         title="LinkedIn profile"
@@ -133,19 +186,12 @@ const SocialLinks = () => {
       >
         <IconButton className={classes.iconButton}>
           <a href="./SteveHanDevResume.pdf" target="_BLANK">
-            <SvgIcon
-              component={ResumeIcon}
-              className={classes.resumeIcon}
-              viewBox="0 0 228 50"
-            />
+             
           </a>
         </IconButton>
       </Tooltip>
-    </Grid>
-  )
-}
+*/
 
-export default SocialLinks
 
   /*        <SocialIconTooltip 
           title="Resume"

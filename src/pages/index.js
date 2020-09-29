@@ -104,6 +104,7 @@ const IndexPage = () => {
 
   return (
     <Layout>
+      {/*<SEO title="Home" />*/}
       {/*      <Skills 
         skills={skills} 
         showAll={showAll}

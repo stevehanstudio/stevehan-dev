@@ -1,8 +1,7 @@
 import React from 'react'
-import { Paper, Box, Typography, Grid, Divider } from '@material-ui/core'
+import { Box, Typography, Grid, Divider } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
-import SocialLinks from '../constants/socialLinks'
-import { FaFileExcel } from 'react-icons/fa'
+import SocialLinks from './SocialLinks'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -55,7 +54,7 @@ const Footer = () => {
       </Box>
       <Grid item className={classes.items}>
         <Typography className={classes.copyText}>
-          &copy;{new Date().getFullYear()} stevehan.dev. All rights reserved
+          &copy;{new Date().getFullYear()} Steve Han. All rights reserved
         </Typography>
       </Grid>
     </Box>

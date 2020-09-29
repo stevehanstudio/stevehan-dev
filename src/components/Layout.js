@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { createMuiTheme, CssBaseline, Grid, Paper, Box, Switch, Button, Divider } from '@material-ui/core'
+import { createMuiTheme, CssBaseline, Grid, Paper, Box, Divider } from '@material-ui/core'
 import Header from './Header'
 import Footer from './Footer'
-import { ThemeProvider, makeStyles } from '@material-ui/core/styles'
-
+import { ThemeProvider, makeStyles, useTheme } from '@material-ui/core/styles'
 // Colors Constants
 const darkPrimary = "#031b40"
+//const darkPrimary = 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,17 +20,17 @@ const useStyles = makeStyles(theme => ({
     marginBottom: '20px',
     marginLeft: 'auto',
     marginRight: 'auto',
-//    paddingBottom: '1000px',
+    //    paddingBottom: '1000px',
     maxWidth: '1200px',
     display: 'flex',
     flexDirection: 'column',
   },
   wrapper: {
-    paddingBottom: '5.5rem', 
+    paddingBottom: '5.5rem',
   },
   footer: {
     display: 'block',
-  }
+  },
 }))
 
 const Layout = ({children}) => {
@@ -78,6 +78,7 @@ const Layout = ({children}) => {
     toggleThemeMode(!themeMode)
   }
 
+  const theme = useTheme()
   const classes = useStyles()
 
   return (

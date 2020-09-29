@@ -1,14 +1,11 @@
 import React from 'react'
-import Image from 'gatsby-image'
+//import Image from 'gatsby-image'
 import BackgroundImage from 'gatsby-background-image'
-import { Grid, Paper, Box, Card, Typography, Hidden } from '@material-ui/core'
+import { Box, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 //import { Link } from 'gatsby'
-//import { Link } from 'gatsby-theme-material-ui'
-import { FaRegClock } from 'react-icons/fa'
-import { IoMdArrowRoundForward } from 'react-icons/io'
-import styled from 'styled-components'
-import SocialLinks from '../../constants/socialLinks'
+//import styled from 'styled-components'
+//import SocialLinks from '../../constants/socialLinks'
 /*
 const fadeIn = keyframes`
   from {
@@ -46,9 +43,7 @@ const useStyles = makeStyles(theme => ({
         color: 'white',
         display: 'flex',
         flexDirection: 'column',
-        top: '0',
         zIndex: '9000',
-        color: 'white',
         fontSize: '1.1rem',
         textAlign: 'center',
       },
