@@ -11,6 +11,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
   FaGithubSquare,
 } from "react-icons/fa"*/
 import ResumeIcon from '../assets/ResumeIcon'
+import ResumePdf from '../assets/SteveHanDevResume.pdf'
 //import { GitHubIcon, LinkedInIcon } from 'gatsby-theme-material-ui'
 import { socialLinks } from '../constants/links'
 
@@ -109,8 +110,9 @@ const SocialLinks = () => {
       >
         <IconButton className={classes.iconButton}>
           <a
-            href="./SteveHanDevResume.pdf"
+            href={ResumePdf}
             target="_BLANK"
+            type="application/pdf"
             rel="noreferrer noopener"
           >
             <SvgIcon

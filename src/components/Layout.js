@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { createMuiTheme, CssBaseline, Grid, Paper, Box, Divider } from '@material-ui/core'
+import { createMuiTheme, CssBaseline, Grid, Paper, Box, Divider, Typography } from '@material-ui/core'
 import Header from './Header'
 import Footer from './Footer'
-import { ThemeProvider, makeStyles, useTheme } from '@material-ui/core/styles'
+import { ThemeProvider, makeStyles, useTheme, responsiveFontSizes } from '@material-ui/core/styles'
 // Colors Constants
 const darkPrimary = "#031b40"
 //const darkPrimary = 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
@@ -34,15 +34,29 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Layout = ({children}) => {
-  /*const [isOpen, setIsOpen] = useState(false)
-  const toggle = () => {
-    setIsOpen(!isOpen)
-  }*/
   const [themeMode, toggleThemeMode] = useState(false)
 
-  const lightTheme = createMuiTheme({
+  let lightTheme = createMuiTheme({
     typography: {
       fontFamily: ['Material Icons', 'Roboto'].join(','),
+      h3: {
+        fontSize: '2rem',
+        '@media (min-width:600px)': {
+          fontSize: '2.4rem',
+        },
+        '@media (min-width:960px)': {
+          fontSize: '3rem',
+        },
+      },
+      h5: {
+        fontSize: '1.2rem',
+        '@media (min-width:600px)': {
+          fontSize: '1.3rem',
+        },
+        '@media (min-width:960px)': {
+          fontSize: '1.4rem',
+        },
+      },
     },
     palette: {
       type: 'light',
@@ -56,9 +70,33 @@ const Layout = ({children}) => {
     },
   })
 
-  const darkTheme = createMuiTheme({
+  let darkTheme = createMuiTheme({
     typography: {
-      fontFamily: ['Material Icons', 'Roboto'].join(','),
+      fontFamily: [
+        'Material Icons',
+        'Roboto',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+      ].join(','),
+      h3: {
+        fontSize: '2rem',
+        '@media (min-width:600px)': {
+          fontSize: '2.4rem',
+        },
+        '@media (min-width:960px)': {
+          fontSize: '3rem',
+        },
+      },
+      h5: {
+        fontSize: '1.2rem',
+        '@media (min-width:600px)': {
+          fontSize: '1.3rem',
+        },
+        '@media (min-width:960px)': {
+          fontSize: '1.4rem',
+        },
+      },
     },
     palette: {
       type: 'dark',
@@ -73,7 +111,10 @@ const Layout = ({children}) => {
       //primary: indigo
     },
   })
-  
+
+  //lightTheme = responsiveFontSizes(lightTheme)  
+  //darkTheme = responsiveFontSizes(darkTheme)
+
   const handleToggleThemeMode = () => {
     toggleThemeMode(!themeMode)
   }

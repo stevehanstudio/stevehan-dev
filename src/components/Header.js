@@ -23,6 +23,12 @@ const useStyles = makeStyles(theme => ({
   appBar: {
     zIndex: 1,
   },
+  burgerIcon: {
+    position: 'absolute',
+    top: '0.2rem',
+    right: '0.3rem',
+    zIndex: 1,
+  },
   switch: {
     width: 48,
     height: 26,
@@ -31,12 +37,6 @@ const useStyles = makeStyles(theme => ({
     top: '0.5rem',
     right: '1.6rem',
     position: 'absolute',
-  },
-  burgerIcon: {
-    position: 'absolute',
-    top: '0.2rem',
-    right: '0.3rem',
-    zIndex: 1,
   },
   switchBase: {
     padding: 1,
@@ -160,7 +160,7 @@ const Navbar = ({themeMode, handleToggleThemeMode}) => {
 
   return (
     <AppBar className={classes.appBar} position="static" elevation={0}>
-      <MobileMenu />
+      <MobileMenu themeMode={themeMode} handleToggleThemeMode={handleToggleThemeMode} />
       <Paper square elevation={0} className={classes.paper}>
         <Hidden xsDown>
           <Switch

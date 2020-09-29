@@ -1,21 +1,58 @@
 import React, { useContext } from 'react'
 import { Link } from 'gatsby'
-import { Drawer, List, ListItem, IconButton, SvgIcon } from '@material-ui/core' 
+import { Drawer, List, ListItem, IconButton, SvgIcon, Divider, Switch } from '@material-ui/core' 
 import { makeStyles } from '@material-ui/core/styles'
-import { Close } from '@material-ui/icons'
+import { Close, PlayCircleFilledWhite } from '@material-ui/icons'
 import { GatsbyContext } from '../context/context'
 import { navLinks, socialLinks } from '../constants/links'
 import ResumeIcon from '../assets/ResumeIcon'
+import ResumePdf from '../assets/SteveHanDevResume.pdf'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    border: `2px solid ${theme.palette.text.primary}`,
+    background: 'white',
   },
+  switch: {
+    width: 48,
+    height: 26,
+    padding: 0,
+    margin: theme.spacing(1),
+  },
+  switchBase: {
+    padding: 1,
+    '&$checked': {
+      transform: 'translateX(22px)',
+      color: theme.palette.common.white,
+      '& + $track': {
+        backgroundColor: '#52d869',
+        opacity: 1,
+        border: 'none',
+      },
+    },
+    '&$focusVisible $thumb': {
+      color: '#52d869',
+      border: '6px solid #fff',
+    },
+  },
+  thumb: {
+    width: 24,
+    height: 24,
+  },
+  track: {
+    borderRadius: 26 / 2,
+    border: `1px solid ${theme.palette.grey[400]}`,
+    backgroundColor: theme.palette.grey[50],
+    opacity: 1,
+    transition: theme.transitions.create(['background-color', 'border']),
+  },
+  checked: {},
   mobileMenu: {
     display: 'flex',
     flexDirection: 'column',
     width: '100vw',
-    justifyContent: 'flex-end',
+    //    justifyContent: 'flex-end',
+    background: 'white',
+    borderBottom: `5px solid ${theme.palette.text.primary}`,
   },
   mobileMenuItem: {
     fontSize: '1.1rem',
@@ -26,7 +63,7 @@ const useStyles = makeStyles(theme => ({
     textDecoration: 'none',
     padding: '0.8rem 0',
     marginBottom: 0,
-    border: '1px solid rgba(255,255,255,0.3)',
+    borderBottom: '1px solid rgba(255,255,255,0.3)',
     '&:hover': {
       opacity: 1,
       textDecoration: 'none',
@@ -43,6 +80,7 @@ const useStyles = makeStyles(theme => ({
     width: '100vw',
     display: 'flex',
     justifyContent: 'flex-end',
+    borderBottom: '1px solid rgba(255,255,255,0.3)',
   },
   socialIcon: {
     fontSize: '24px',
@@ -73,60 +111,74 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const MobileMenu = () => {
-   const { isMobileMenuOpen, hideMobileMenu } = useContext(GatsbyContext)
-   //const theme = useTheme()
-   const classes = useStyles()
+const MobileMenu = ({ themeMode, handleToggleThemeMode }) => {
+  const { isMobileMenuOpen, hideMobileMenu } = useContext(GatsbyContext)
+  //const theme = useTheme()
+  const classes = useStyles(themeMode)
 
-//   console.log("MobileMenu", isMobileMenuOpen)
-   return (
-     <Drawer
-       variant="persistent"
-       className="classes.root"
-       anchor="top"
-       open={isMobileMenuOpen}
-     >
-       <List className="classes.mobileMenu">
-         <ListItem className={classes.close}>
-           <IconButton onClick={hideMobileMenu}>
-             <Close />
-           </IconButton>
-         </ListItem>
-         {navLinks.map(navLink => {
-           const { title, icon, pageUrl } = navLink
-           return (
-             <Link to={pageUrl}>
-               <ListItem className={classes.mobileMenuItem}>
-                 <span className={classes.socialIcon}>{icon}</span>
-                 {title}
-               </ListItem>
-             </Link>
-           )
-         })}
-         {socialLinks.map(socialLink => {
-           const { title, icon, url } = socialLink
-           return (
-             <a href={url} target="_BLANK" rel="noreferrer noopener">
-               <ListItem className={classes.mobileMenuItem}>
-                 <span className={classes.socialIcon}>{icon}</span>
-                 {title}
-               </ListItem>
-             </a>
-           )
-         })}
-         <a href="./SteveHanDevResume.pdf" target="_BLANK">
-           <ListItem className={classes.mobileMenuItem}>
-             <SvgIcon
-               component={ResumeIcon}
-               className={classes.resumeIcon}
-               viewBox="0 0 228 50"
-             /> 
-             Resume
-           </ListItem>
-         </a>
-       </List>
-     </Drawer>
-   )   
+  //   console.log("MobileMenu", isMobileMenuOpen)
+  return (
+    <Drawer
+      variant="persistent"
+      anchor="top"
+      elevation={24}
+      className={classes.root}
+      open={isMobileMenuOpen}
+    >
+      <List className="classes.mobileMenu">
+        <ListItem className={classes.close}>
+          <IconButton onClick={hideMobileMenu}>
+            <Close />
+          </IconButton>
+        </ListItem>
+        {navLinks.map(navLink => {
+          const { title, icon, pageUrl } = navLink
+          return (
+            <Link to={pageUrl}>
+              <ListItem className={classes.mobileMenuItem}>
+                <span className={classes.socialIcon}>{icon}</span>
+                {title}
+              </ListItem>
+            </Link>
+          )
+        })}
+        {socialLinks.map(socialLink => {
+          const { title, icon, url } = socialLink
+          return (
+            <a href={url} target="_BLANK" rel="noreferrer noopener">
+              <ListItem className={classes.mobileMenuItem}>
+                <span className={classes.socialIcon}>{icon}</span>
+                {title}
+              </ListItem>
+            </a>
+          )
+        })}
+        <a href={ResumePdf} target="_BLANK">
+          <ListItem className={classes.mobileMenuItem}>
+            <SvgIcon
+              component={ResumeIcon}
+              className={classes.resumeIcon}
+              viewBox="0 0 228 50"
+            />
+            Resume
+          </ListItem>
+        </a>
+        <ListItem className={classes.mobileMenuItem}>
+          <Switch
+            classes={{
+              root: classes.switch,
+              switchBase: classes.switchBase,
+              thumb: classes.thumb,
+              track: classes.track,
+              checked: classes.checked,
+            }}
+            checked={themeMode}
+            onChange={handleToggleThemeMode}
+          />Light / Dark Mode
+        </ListItem>
+      </List>
+    </Drawer>
+  )
 }
 
 export default MobileMenu
