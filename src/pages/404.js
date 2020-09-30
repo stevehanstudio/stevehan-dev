@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby-theme-material-ui'
 import Layout from '../components/Layout'
 import { Paper, Typography, Button, Grid, makeStyles } from '@material-ui/core'
+import SEO from '../components/seo'
 
 const useStyles = makeStyles(theme => ({
    paper: {
@@ -14,6 +15,7 @@ const NotFoundPage = () => {
 
    return (
      <Layout>
+       <SEO title="404 error page not found" />
        <Paper className={classes.paper}>
          <Grid
            container

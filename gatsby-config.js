@@ -1,13 +1,13 @@
 module.exports = {
   siteMetadata: {
-    title: `Steve Han Frontend Developer portfolio`,
-    description: `Frontend focused full stack web developer portfolio site built using React, Gatsby, MDX, React Context API, and Material UI.`,
+    title: `Steve Han React Developer`,
+    description: `Frontend focused full stack React web developer portfolio site built using React, Gatsby, MDX, React Context API, and Material UI.`,
     author: `Steve Han`,
-    titleTemplate: `%s | Steve Han React Developer`,
+    titleTemplate: `%s | Steve Han Developer`,
     url: `https://www.stevehan.dev/`,
     image: `mainBcg.png`,
     twitterUsername: `@stevehanphoto`,
-    siteUrl: `http://localhost:9000`,
+    siteUrl: `https://www.stevehan.dev`,
   },
   plugins: [
     `gatsby-theme-material-ui`,
@@ -48,7 +48,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-tagmanager`,
       options: {
-        id: ``,
+        id: `GTM-T8VL9NM`,
         includeInDevelopment: true,
       },
     },

@@ -3,7 +3,7 @@ import Layout from '../components/Layout'
 import Projects from '../components/Projects'
 import Skills from '../components/Skills'
 import { graphql, useStaticQuery } from 'gatsby'
-import SEO from '../components/SEO'
+import SEO from '../components/seo'
 import { Box, Divider } from '@material-ui/core'
 import { spacing } from '@material-ui/system'
 
@@ -104,7 +104,7 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      {/*<SEO title="Home" />*/}
+      <SEO title="Home" />
       {/*      <Skills 
         skills={skills} 
         showAll={showAll}
