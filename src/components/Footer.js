@@ -22,13 +22,8 @@ const useStyles = makeStyles(theme => ({
     display: 'block',
     position: 'relative',
     width: '100%',
-    alignSelf: 'center',
-    alignContent: 'center',
-    alignItems: 'center',
-    justifySelf: 'center',
-    justifyContent: 'center',
+    paddingTop: '1rem',
     textAlign: 'center',
-    justifyItems: 'center',
   },
   copyText: {
     letterSpacing: '0.2rem',
@@ -49,9 +44,9 @@ const Footer = () => {
       className={classes.root}
     >
       <Divider />
-      <Box component="div" display="inline-block" className={classes.items}>
+{/*      <Box component="div" display="inline-block" className={classes.items}>
         <SocialLinks />
-      </Box>
+      </Box>*/}
       <Grid item className={classes.items}>
         <Typography className={classes.copyText}>
           &copy;{new Date().getFullYear()} Steve Han. All rights reserved

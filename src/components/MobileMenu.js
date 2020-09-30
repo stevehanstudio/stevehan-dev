@@ -2,21 +2,23 @@ import React, { useContext } from 'react'
 import { Link } from 'gatsby'
 import { Drawer, List, ListItem, IconButton, SvgIcon, Divider, Switch } from '@material-ui/core' 
 import { makeStyles } from '@material-ui/core/styles'
-import { Close, PlayCircleFilledWhite } from '@material-ui/icons'
+import { Close } from '@material-ui/icons'
 import { GatsbyContext } from '../context/context'
 import { navLinks, socialLinks } from '../constants/links'
 import ResumeIcon from '../assets/ResumeIcon'
+import LightDarkIcon from '../assets/LightDarkIcon'
 import ResumePdf from '../assets/SteveHanDevResume.pdf'
 
 const useStyles = makeStyles(theme => ({
-  root: {
+  /*  root: {
     background: 'white',
-  },
+  },*/
   switch: {
+    flex: '0 1 auto',
     width: 48,
     height: 26,
     padding: 0,
-    margin: theme.spacing(1),
+    marginRight: theme.spacing(2),
   },
   switchBase: {
     padding: 1,
@@ -55,6 +57,8 @@ const useStyles = makeStyles(theme => ({
     borderBottom: `5px solid ${theme.palette.text.primary}`,
   },
   mobileMenuItem: {
+    display: 'flex',
+    flexDirection: 'row',
     fontSize: '1.1rem',
     paddingLeft: theme.spacing(2),
     //    lineHeight: 1,
@@ -109,6 +113,28 @@ const useStyles = makeStyles(theme => ({
       opacity: 1,
     },
   },
+  lightDarkIcon: {
+    flex: '0 1 auto',
+    fill: 'white',
+    color: theme.palette.text.primary,
+    //    fontSize: '1.5rem',
+    fontSize: '24px',
+    //    paddingBottom: '1.5px',
+    paddingRight: '20px',
+    width: '22px',
+    height: '22px',
+    //    left: '3px',
+    //    bottom: '6px',
+    position: 'relative',
+    opacity: 0.7,
+    '&:hover': {
+      opacity: 1,
+    },
+  },
+  lightDarkIconText: {
+    flex: '1 2 auto',
+    paddingLeft: '0.6rem',
+  },
 }))
 
 const MobileMenu = ({ themeMode, handleToggleThemeMode }) => {
@@ -137,7 +163,7 @@ const MobileMenu = ({ themeMode, handleToggleThemeMode }) => {
             <Link to={pageUrl}>
               <ListItem className={classes.mobileMenuItem}>
                 <span className={classes.socialIcon}>{icon}</span>
-                {title}
+                <span className={classes.menuText}>{title}</span>
               </ListItem>
             </Link>
           )
@@ -148,6 +174,7 @@ const MobileMenu = ({ themeMode, handleToggleThemeMode }) => {
             <a href={url} target="_BLANK" rel="noreferrer noopener">
               <ListItem className={classes.mobileMenuItem}>
                 <span className={classes.socialIcon}>{icon}</span>
+                <span className={classes.menuText}></span>
                 {title}
               </ListItem>
             </a>
@@ -159,11 +186,23 @@ const MobileMenu = ({ themeMode, handleToggleThemeMode }) => {
               component={ResumeIcon}
               className={classes.resumeIcon}
               viewBox="0 0 228 50"
+              color="white"
+              fill="white"
             />
-            Resume
+            <span className={classes.menuText}>Resume</span>
           </ListItem>
         </a>
         <ListItem className={classes.mobileMenuItem}>
+          <SvgIcon
+            component={LightDarkIcon}
+            className={classes.lightDarkIcon}
+            viewBox="0 0 228 50"
+            width="22px"
+            height="22px"
+            color="white"
+            background="yellow"
+          />
+          <span className={classes.lightDarkIconText}>Light / Dark Switch</span>
           <Switch
             classes={{
               root: classes.switch,
@@ -174,7 +213,7 @@ const MobileMenu = ({ themeMode, handleToggleThemeMode }) => {
             }}
             checked={themeMode}
             onChange={handleToggleThemeMode}
-          />Light / Dark Mode
+          />
         </ListItem>
       </List>
     </Drawer>
