@@ -10,9 +10,9 @@ import LightDarkIcon from '../assets/LightDarkIcon'
 import ResumePdf from '../assets/SteveHanDevResume.pdf'
 
 const useStyles = makeStyles(theme => ({
-  /*  root: {
-    background: 'white',
-  },*/
+  root: {
+    minHeight: '100vh',
+  },
   switch: {
     flex: '0 1 auto',
     width: 48,
@@ -53,8 +53,9 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     width: '100vw',
     //    justifyContent: 'flex-end',
-    background: 'white',
-    borderBottom: `5px solid ${theme.palette.text.primary}`,
+    //background: 'white',
+    //borderBottom: `5px solid ${theme.palette.text.primary}`,
+    minHeight: '100vh',
   },
   mobileMenuItem: {
     display: 'flex',
@@ -145,9 +146,7 @@ const MobileMenu = ({ themeMode, handleToggleThemeMode }) => {
   //   console.log("MobileMenu", isMobileMenuOpen)
   return (
     <Drawer
-      variant="persistent"
       anchor="top"
-      elevation={24}
       className={classes.root}
       open={isMobileMenuOpen}
     >

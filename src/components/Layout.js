@@ -65,6 +65,7 @@ const Layout = ({children}) => {
         primary: darkPrimary,
       },
       background: {
+        paper: '#e2f0f1',
         secondary: 'rgb(255,255,255,0.6)',
       },
     },

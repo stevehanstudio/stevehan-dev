@@ -189,7 +189,7 @@ const Navbar = ({themeMode, handleToggleThemeMode}) => {
               STEVE HAN
             </Typography>
             <Typography variant="h4" className={classes.h4}>
-              React Developer
+              Front End Developer
             </Typography>
           </Grid>
           <Hidden xsDown>
@@ -197,7 +197,7 @@ const Navbar = ({themeMode, handleToggleThemeMode}) => {
               <Toolbar className={classes.toolbar}>
                 <Grid item className={classes.menuItems}>
                   {navLinks.map(navLink => {
-                    const { title, pageUrl } = navLink
+                    const { title, pageUrl } = navLink 
                     return (
                       <Button focusRipple className={classes.iconButton}>
                         <Link to={pageUrl} className={classes.menuItem}>

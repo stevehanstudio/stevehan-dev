@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     //background: 'rgb(255,255,255,0.6)',
     //background: 'rgb(0,0,0,0.6)',
     background: theme.palette.background.secondary,
-    boxShadow: '4px 4px 8px 2px rgba(0,0,0,0.2)',
+    boxShadow: '4px 4px 8px 2px rgba(255,255,255,1)',
     transition: '0.7s',
     transitionTimingFunction: 'ease-in-out',
     '&:hover': {
